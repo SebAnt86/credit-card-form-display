@@ -5,9 +5,9 @@ import CardForm from "./components/CardForm";
 
 function App() {
   return (
-    <>
+    <div className="d-flex justify-content-center align-items-center">
     <CardForm />
-    </>
+    </div>
   );
 }
 

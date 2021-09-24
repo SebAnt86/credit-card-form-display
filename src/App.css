@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  background-color: #c1dbf78e;
+}
+
+/* Form Style */
+
+.form-style {
+  max-width: 600px;
+  background-color: white;
+  margin-top: 3rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  padding-top: 9rem !important;
+}
+
+
+.form-select {
+  font-size: 0.85rem;
+}
+
+.form-label {
+  margin-bottom: 0.2rem;
+}
+
+.btn-submit {
+  max-width: 100%;
+}
+
+/* media query on mobile screen */
+@media (max-width: 500px){
+  .form-style{
+    padding: 0.8rem !important;
+    margin: 0 0.5rem !important;
+  }
+}
