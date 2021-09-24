@@ -3,27 +3,50 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
-function CardForm() {
-
+function CardForm({
+  setCardName,
+  setCardNumber,
+  setExpMonth,
+  setExpYear,
+  setCvv,
+  setSaveCard,
+  saveCard,
+  cardName,
+    cardNumber,
+    expMonth,
+    expYear,
+    cvv,
+}) {
   const onAdd = (e) => {
     e.preventDefault();
-    console.log("form submitted!");
-  }
+    const newCard = {
+      cardName,
+      cardNumber,
+      expMonth,
+      expYear,
+      cvv,
+    };
+    console.log(newCard.cardName);
+    console.log(newCard.cardNumber);
+    console.log(newCard.expMonth);
+    console.log(newCard.expYear);
+    console.log(newCard.cvv);
+  };
 
   return (
     <>
       <Form className="form-style p-4" noValidate onSubmit={onAdd}>
-        <Row className="mt-0">
+        <Row>
           <Form.Group className="mb-3">
             <Form.Label>Card Number</Form.Label>
-            <Form.Control type="number" />
+            <Form.Control type="number" onChange={(e) =>setCardNumber(e.target.value)}/>
           </Form.Group>
         </Row>
 
         <Row>
           <Form.Group className="mb-3">
             <Form.Label>Card Name</Form.Label>
-            <Form.Control type="text" />
+            <Form.Control type="text" onChange={(e) =>setCardName(e.target.value)}/>
           </Form.Group>
         </Row>
 
@@ -33,17 +56,17 @@ function CardForm() {
               <Form.Label>Expiration Date</Form.Label>
               <Row>
                 <Col>
-                  <Form.Select aria-label="Month select">
+                  <Form.Select aria-label="Month select" onChange={(e) =>setExpMonth(e.target.value)}>
                     <option>Month</option>
-                    <option value="1">Jan</option>
-                    <option value="2">Feb</option>
-                    <option value="3">Mar</option>
-                    <option value="4">Apr</option>
-                    <option value="5">May</option>
-                    <option value="6">Jun</option>
-                    <option value="7">Jul</option>
-                    <option value="8">Aug</option>
-                    <option value="9">Sep</option>
+                    <option value="01">Jan</option>
+                    <option value="02">Feb</option>
+                    <option value="03">Mar</option>
+                    <option value="04">Apr</option>
+                    <option value="05">May</option>
+                    <option value="06">Jun</option>
+                    <option value="07">Jul</option>
+                    <option value="08">Aug</option>
+                    <option value="09">Sep</option>
                     <option value="10">Oct</option>
                     <option value="11">Nov</option>
                     <option value="12">Dec</option>
@@ -51,7 +74,7 @@ function CardForm() {
                 </Col>
 
                 <Col>
-                  <Form.Select aria-label="Year select">
+                  <Form.Select aria-label="Year select" onChange={(e) =>setExpYear(e.target.value)}>
                     <option>Year</option>
                     <option value={new Date().getFullYear()}>
                       {new Date().getFullYear()}
@@ -95,7 +118,7 @@ function CardForm() {
           <Col xs={4}>
             <Form.Group>
               <Form.Label>CVV</Form.Label>
-              <Form.Control type="number" />
+              <Form.Control type="number" onChange={(e) =>setCvv(e.target.value)}/>
             </Form.Group>
           </Col>
         </Row>
@@ -107,10 +130,9 @@ function CardForm() {
         </Row>
 
         <Row className="justify-content-center px-2">
-          
-              <Button variant="primary" type="submit">
-                Submit
-              </Button>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
         </Row>
       </Form>
     </>

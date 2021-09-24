@@ -13,9 +13,8 @@ body {
 /* Form Style */
 
 .form-style {
-  max-width: 600px;
+  max-width: 700px;
   background-color: white;
-  margin-top: 3rem;
   border-radius: 10px;
   font-size: 0.85rem;
   padding-top: 9rem !important;
@@ -30,14 +29,28 @@ body {
   margin-bottom: 0.2rem;
 }
 
-.btn-submit {
-  max-width: 100%;
+
+/* card front style */
+
+.card-front {
+  border-radius: 15px;
+  background-color: rgb(8, 8, 97);
+  color: white;
+  width: 350px;
+  height: 200px;
 }
 
+
 /* media query on mobile screen */
-@media (max-width: 500px){
+@media (max-width: 411px){
   .form-style{
     padding: 0.8rem !important;
+    padding-top: 9rem !important;
     margin: 0 0.5rem !important;
   }
+  .card-front {
+    width: 300px;
+    height: 150px;
+  }
 }
+
