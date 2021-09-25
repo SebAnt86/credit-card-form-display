@@ -4,24 +4,23 @@ import Col from "react-bootstrap/Col";
 function CardDisplayFront({ cardName, cardNumber, expMonth, expYear, cvv }) {
   return (
     <div className="card-front p-3 mt-5">
-      <Row className="justify-content-center mt-5">
+      <Row className="justify-content-center mt-4 mb-3">
         {!cardNumber ? "0000 0000 0000 0000" : (
         <p className="text-center">{cardNumber}</p>
         )}
       </Row>
-      <Row>
-        <Col>
+      <Row className="mb-0">
+        <Col className="mb-0">
           <div>
-            <p>Card Holder</p>
+            <p className="mb-0">Card Holder</p>
             <p>{cardName}</p>
           </div>
         </Col>
-
-        <Col>
+        <Col className="mb-0">
           <div>
-            <p>Expires</p>
+            <p className="mb-0">Expires</p>
             <p>
-              <span>{expMonth}</span>/<span>{expYear}</span>
+              <span>{!expMonth ? "MM" : expMonth}</span>/<span>{!expYear ? "YY" : expYear}</span>
             </p>
           </div>
         </Col>

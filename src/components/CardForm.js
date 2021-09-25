@@ -3,6 +3,8 @@ import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 
+import { useState } from "react";
+
 function CardForm({
   setCardName,
   setCardNumber,
@@ -12,25 +14,90 @@ function CardForm({
   setSaveCard,
   saveCard,
   cardName,
+  cardNumber,
+  expMonth,
+  expYear,
+  cvv,
+}) {
+  const [error, setError] = useState({
+    cvvErr: "invalid cvv",
+    expDateErr: "invalid date",
+  });
+
+  const [valid, setValid] = useState({
+    cvvValid: false,
+    expDateValid: false,
+  });
+
+  const newCard = {
+    cardName,
     cardNumber,
     expMonth,
     expYear,
     cvv,
-}) {
+  };
+
+  const findDebitCardType = (cardNumber) => {
+    const regexPattern = {
+      MASTERCARD: /^5[1-5][0-9]{1,}|^2[2-7][0-9]{1,}$/,
+      VISA: /^4[0-9]{2,}$/,
+      AMERICAN_EXPRESS: /^3[47][0-9]{5,}$/,
+      DISCOVER: /^6(?:011|5[0-9]{2})[0-9]{3,}$/,
+      DINERS_CLUB: /^3(?:0[0-5]|[68][0-9])[0-9]{4,}$/,
+      JCB: /^(?:2131|1800|35[0-9]{3})[0-9]{3,}$/,
+    };
+    for (const card in regexPattern) {
+      if (cardNumber.replace(/[^\d]/g, "").match(regexPattern[card]))
+        return card;
+    }
+    return "";
+  };
+
+  const cardType = findDebitCardType(newCard.cardNumber);
+  console.log(cardType);
+
+  // check if the card is expired
+  const expDateValidation = () => {
+    const currentMonth =
+      (new Date().getMonth() + 1).toString.length === 1
+        ? "0" + (new Date().getMonth() + 1)
+        : new Date().getMonth() + 1;
+    const currentYear = new Date().getFullYear();
+    //console.log(`${currentMonth}/${currentYear}`);
+    if (currentMonth > newCard.expMonth && currentYear >= newCard.expYear) {
+      //alert("invalid date");
+      setValid({...valid, expDateValid: true});
+      setError({...error, expDateErr: "Invalid expiry date!"})
+    }
+  };
+
+  // check if the cvv is a valid digits number
+  const cvvValidation = () => {
+    if (cardType === "AMERICAN_EXPRESS" && newCard.cvv.length !== 4) {
+      //alert("CVV invalid length for Amex");
+      setValid({...valid, cvvValid: true});
+      setError({...error, cvvErr: "Invalid CVV number for Amex!"})
+    } else if (newCard.cvv.length !== 3) {
+      //alert("CVV invalid length");
+      setValid({...valid, cvvValid: true});
+      setError({...error, cvvErr: "Invalid CVV number!"})
+    }
+  };
+
+  // const cardNumberSpacing = (cardNum) => {
+  //   if (cardType !== "") {
+  //     if (cardType === "AMERICAN_EXPRESS") {
+  //       return cardNum.splice(4, 0, " ");
+  //     }
+  //   }
+  // };
+
   const onAdd = (e) => {
     e.preventDefault();
-    const newCard = {
-      cardName,
-      cardNumber,
-      expMonth,
-      expYear,
-      cvv,
-    };
-    console.log(newCard.cardName);
-    console.log(newCard.cardNumber);
-    console.log(newCard.expMonth);
-    console.log(newCard.expYear);
-    console.log(newCard.cvv);
+
+    //Validations field
+    expDateValidation();
+    cvvValidation();
   };
 
   return (
@@ -39,14 +106,22 @@ function CardForm({
         <Row>
           <Form.Group className="mb-3">
             <Form.Label>Card Number</Form.Label>
-            <Form.Control type="number" onChange={(e) =>setCardNumber(e.target.value)}/>
+            <Form.Control
+              type="text"
+              name="number"
+              maxlength="19"
+              onChange={(e) => setCardNumber(e.target.value)}
+            />
           </Form.Group>
         </Row>
 
         <Row>
           <Form.Group className="mb-3">
             <Form.Label>Card Name</Form.Label>
-            <Form.Control type="text" onChange={(e) =>setCardName(e.target.value)}/>
+            <Form.Control
+              type="text"
+              onChange={(e) => setCardName(e.target.value)}
+            />
           </Form.Group>
         </Row>
 
@@ -56,7 +131,10 @@ function CardForm({
               <Form.Label>Expiration Date</Form.Label>
               <Row>
                 <Col>
-                  <Form.Select aria-label="Month select" onChange={(e) =>setExpMonth(e.target.value)}>
+                  <Form.Select
+                    aria-label="Month select"
+                    onChange={(e) => setExpMonth(e.target.value)}
+                  >
                     <option>Month</option>
                     <option value="01">Jan</option>
                     <option value="02">Feb</option>
@@ -74,7 +152,10 @@ function CardForm({
                 </Col>
 
                 <Col>
-                  <Form.Select aria-label="Year select" onChange={(e) =>setExpYear(e.target.value)}>
+                  <Form.Select
+                    aria-label="Year select"
+                    onChange={(e) => setExpYear(e.target.value)}
+                  >
                     <option>Year</option>
                     <option value={new Date().getFullYear()}>
                       {new Date().getFullYear()}
@@ -111,6 +192,9 @@ function CardForm({
                     </option>
                   </Form.Select>
                 </Col>
+                {valid.expDateValid && (<Form.Label className="m-0 text-danger ps-2">
+                  {error.expDateErr}
+                </Form.Label>)}
               </Row>
             </Form.Group>
           </Col>
@@ -118,7 +202,13 @@ function CardForm({
           <Col xs={4}>
             <Form.Group>
               <Form.Label>CVV</Form.Label>
-              <Form.Control type="number" onChange={(e) =>setCvv(e.target.value)}/>
+              <Form.Control
+                type="number"
+                onChange={(e) => setCvv(e.target.value)}
+              />
+               {valid.cvvValid && (<Form.Label className="m-0 text-danger ps-2">
+                  {error.cvvErr}
+                </Form.Label>)}
             </Form.Group>
           </Col>
         </Row>
