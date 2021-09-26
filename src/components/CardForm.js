@@ -286,7 +286,7 @@ function CardForm({
             </Form.Group>
           </Col>
 
-          <Col xs={4}>
+          <Col xs={6} md={4}>
             <Form.Group>
               <Form.Label>CVV</Form.Label>
               <Form.Control
