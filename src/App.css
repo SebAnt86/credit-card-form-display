@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200;300;400&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -47,6 +49,8 @@ body {
   position: absolute;
   top: 0.65rem;
   box-shadow: 15px 10px 15px 10px rgba(118, 132, 179, 0.303), 15px 6px 10px 0 rgba(113, 134, 205, 0.18);
+  font-family: 'Gemunu Libre', sans-serif;
+  /* padding-bottom: 1rem; */
 }
 
 .chip{
@@ -58,17 +62,39 @@ body {
   width: 90px;
 }
 
+.card-number{
+  font-size: 1.85rem;
+}
+
+.card-holder{
+  /* margin-right: 10rem; */
+  margin-left: 0.3rem;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+/* .card-holder.div{
+  width: 100%;
+} */
+
 /* media query on mobile screen */
 @media (max-width: 411px) {
   .form-style {
     padding: 0.8rem !important;
     padding-top: 9rem !important;
-    margin: 0 0.5rem !important;
+    margin: 0 0.2rem !important;
     margin-top: 11.5rem !important;
     margin-bottom: 5rem !important;
   }
   .card-front {
     width: 300px;
     height: 180px;
+    font-size: 0.55rem;
+  }
+  .card-number{
+    font-size: 1.55rem;
+  }
+  .chip{
+    margin-top: 0.2rem !important;
   }
 }
