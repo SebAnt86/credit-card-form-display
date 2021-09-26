@@ -113,7 +113,6 @@ function CardForm({
       if (cardType === "AMERICAN_EXPRESS") {
         if (cvv.length !== 4) {
           //alert("CVV invalid length for Amex");
-          console.log(cvv.length);
           setCvvValid(true);
           setCvvErr("Invalid Amex CVV number!");
         }else {
@@ -146,20 +145,13 @@ function CardForm({
     cvvValidation();
     cardNameValidation();
 
-    console.log("cardNameValid: " + cardNameValid);
-    console.log("cardNumValid: " + cardNumValid);
-    console.log("expDateValid: " + expDateValid);
-    console.log("cvvValid: " + cvvValid);
-    console.log("----------------------");
+    // console.log("cardNameValid: " + cardNameValid);
+    // console.log("cardNumValid: " + cardNumValid);
+    // console.log("expDateValid: " + expDateValid);
+    // console.log("cvvValid: " + cvvValid);
+    // console.log("----------------------");
 
-    // if (
-    //   !cardName ||
-    //   !cardNumber ||
-    //   !expMonth ||
-    //   !expYear ||
-    //   !cvv
-    // ) {
-    //   alert("check the fields!");
+  
     if (!cardNameValid && !cardNumValid && !expDateValid && !cvvValid) {
       alert("submited!!!!!");
 
@@ -173,7 +165,6 @@ function CardForm({
       setExpDateValid(true);
       setCvvValid(true);
     }
-    // }
   };
 
   return (
@@ -256,37 +247,37 @@ function CardForm({
                     onBlur={expDateValidation}
                   >
                     <option>Year</option>
-                    <option value={new Date().getFullYear()}>
+                    <option value={(new Date().getFullYear()).toString().slice(-2)}>
                       {new Date().getFullYear()}
                     </option>
-                    <option value={new Date().getFullYear() + 1}>
+                    <option value={(new Date().getFullYear() + 1).toString().slice(-2)}>
                       {new Date().getFullYear() + 1}
                     </option>
-                    <option value={new Date().getFullYear() + 2}>
+                    <option value={(new Date().getFullYear() + 2).toString().slice(-2)}>
                       {new Date().getFullYear() + 2}
                     </option>
-                    <option value={new Date().getFullYear() + 3}>
+                    <option value={(new Date().getFullYear() + 3).toString().slice(-2)}>
                       {new Date().getFullYear() + 3}
                     </option>
-                    <option value={new Date().getFullYear() + 4}>
+                    <option value={(new Date().getFullYear() + 4).toString().slice(-2)}>
                       {new Date().getFullYear() + 4}
                     </option>
-                    <option value={new Date().getFullYear() + 5}>
+                    <option value={(new Date().getFullYear() + 5).toString().slice(-2)}>
                       {new Date().getFullYear() + 5}
                     </option>
-                    <option value={new Date().getFullYear() + 6}>
+                    <option value={(new Date().getFullYear() + 6).toString().slice(-2)}>
                       {new Date().getFullYear() + 6}
                     </option>
-                    <option value={new Date().getFullYear() + 7}>
+                    <option value={(new Date().getFullYear() + 7).toString().slice(-2)}>
                       {new Date().getFullYear() + 7}
                     </option>
-                    <option value={new Date().getFullYear() + 8}>
+                    <option value={(new Date().getFullYear() + 8).toString().slice(-2)}>
                       {new Date().getFullYear() + 8}
                     </option>
-                    <option value={new Date().getFullYear() + 9}>
+                    <option value={(new Date().getFullYear() + 9).toString().slice(-2)}>
                       {new Date().getFullYear() + 9}
                     </option>
-                    <option value={new Date().getFullYear() + 10}>
+                    <option value={(new Date().getFullYear() + 10).toString().slice(-2)}>
                       {new Date().getFullYear() + 10}
                     </option>
                   </Form.Select>
