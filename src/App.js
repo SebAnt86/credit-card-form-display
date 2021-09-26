@@ -16,7 +16,7 @@ function App() {
   const [saveCard, setSaveCard] = useState([]);
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center">
+    <div className="main-container d-flex flex-column justify-content-center align-items-center">
       <CardDisplayFront
         cardName={cardName}
         cardNumber={cardNumber}
