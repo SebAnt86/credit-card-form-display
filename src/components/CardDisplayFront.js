@@ -1,12 +1,16 @@
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import chip from "../images/chip.png";
 
 function CardDisplayFront({ cardName, cardNumber, expMonth, expYear, cvv }) {
   return (
     <div className="card-front p-3 mt-5">
-        <Row>
-            <div className="chip">
-                <img src="./images/cc-chip.jpg" alt="creditcard chip"></img>
+        <Row className="justify-content-between mt-1">
+            <div className="cc-imgs">
+                <img src={chip} alt="creditcard chip" className="chip m-0"></img>
+            </div>
+            <div className="cc-imgs">
+            LOGO
             </div>
         </Row>
       <Row className="justify-content-center mt-4 mb-3">

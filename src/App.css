@@ -49,9 +49,14 @@ body {
   box-shadow: 15px 10px 15px 10px rgba(118, 132, 179, 0.303), 15px 6px 10px 0 rgba(113, 134, 205, 0.18);
 }
 
-/* .chip{
-  background-image: url("./images/cc-chip.jpeg");
-} */
+.chip{
+  width: 40px;
+  border-radius: 10px;
+}
+
+.cc-imgs{
+  width: 90px;
+}
 
 /* media query on mobile screen */
 @media (max-width: 411px) {
