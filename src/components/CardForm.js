@@ -19,19 +19,19 @@ function CardForm({
   expYear,
   cvv,
 }) {
- const [cardType, setCardType] = useState("")
+  const [cardType, setCardType] = useState("");
 
   //error message states
-  const [cardNumErr, setCardNumErr] = useState("")
-  const [cardNameErr, setCardNameErr] = useState("")
-  const [cvvErr, setCvvErr] = useState("")
-  const [expDateErr, setExpDateErr] = useState("")
+  const [cardNumErr, setCardNumErr] = useState("");
+  const [cardNameErr, setCardNameErr] = useState("");
+  const [cvvErr, setCvvErr] = useState("");
+  const [expDateErr, setExpDateErr] = useState("");
 
   //validation state
-  const [cardNameValid, setCardNameValid] = useState(false)
-  const [cardNumValid, setCardNumValid] = useState(false)
-  const [cvvValid, setCvvValid] = useState(false)
-  const [expDateValid, setExpDateValid] = useState(false)
+  const [cardNameValid, setCardNameValid] = useState(true);
+  const [cardNumValid, setCardNumValid] = useState(true);
+  const [cvvValid, setCvvValid] = useState(true);
+  const [expDateValid, setExpDateValid] = useState(true);
 
   const findDebitCardType = (cardNumber) => {
     const regexPattern = {
@@ -53,22 +53,24 @@ function CardForm({
   //console.log(cardType);
 
   const cardNumValidation = () => {
-    if(!cardNumber){
+    setCardType(findDebitCardType(cardNumber));
+    if (!cardNumber) {
       setCardNumValid(true);
       setCardNumErr("Please enter the card number.");
     } else {
       setCardNumValid(false);
     }
-  }
+    console.log(cardType);
+  };
 
   const cardNameValidation = () => {
-    if(!cardName){
+    if (!cardName) {
       setCardNameValid(true);
       setCardNameErr("Please enter the card holder's name.");
     } else {
       setCardNameValid(false);
     }
-  }
+  };
 
   // check if the card is expired
   const expDateValidation = () => {
@@ -103,15 +105,20 @@ function CardForm({
 
   // check if the cvv is a valid digits number
   const cvvValidation = () => {
-    setCardType(findDebitCardType(cardNumber));
+    //setCardType(findDebitCardType(cardNumber));
     if (!cvv) {
       setCvvValid(true);
       setCvvErr("Please enter the CVV number.");
     } else {
-      if (cardType === "AMERICAN_EXPRESS" && cvv.length !== 4) {
-        //alert("CVV invalid length for Amex");
-        setCvvValid(true);
-        setCvvErr("Invalid Amex CVV number!");
+      if (cardType === "AMERICAN_EXPRESS") {
+        if (cvv.length !== 4) {
+          //alert("CVV invalid length for Amex");
+          console.log(cvv.length);
+          setCvvValid(true);
+          setCvvErr("Invalid Amex CVV number!");
+        }else {
+          setCvvValid(false);
+        }
       } else if (cvv.length !== 3) {
         //alert("CVV invalid length");
         setCvvValid(true);
@@ -139,16 +146,21 @@ function CardForm({
     cvvValidation();
     cardNameValidation();
 
-    if (
-      !cardName ||
-      !cardNumber ||
-      !expMonth ||
-      !expYear ||
-      !cvv
-    ) {
-      alert("check field!");
-    } else {
-      
+    console.log("cardNameValid: " + cardNameValid);
+    console.log("cardNumValid: " + cardNumValid);
+    console.log("expDateValid: " + expDateValid);
+    console.log("cvvValid: " + cvvValid);
+    console.log("----------------------");
+
+    // if (
+    //   !cardName ||
+    //   !cardNumber ||
+    //   !expMonth ||
+    //   !expYear ||
+    //   !cvv
+    // ) {
+    //   alert("check the fields!");
+    if (!cardNameValid && !cardNumValid && !expDateValid && !cvvValid) {
       alert("submited!!!!!");
 
       setCardName("");
@@ -156,7 +168,12 @@ function CardForm({
       setExpMonth("");
       setExpYear("");
       setCvv("");
+      setCardNameValid(true);
+      setCardNumValid(true);
+      setExpDateValid(true);
+      setCvvValid(true);
     }
+    // }
   };
 
   return (
@@ -174,10 +191,10 @@ function CardForm({
               onBlur={cardNumValidation}
             />
             {cardNumValid && (
-                    <Form.Label className="m-0 text-danger ps-2">
-                      {cardNumErr}
-                    </Form.Label>
-                  )}
+              <Form.Label className="m-0 text-danger ps-2">
+                {cardNumErr}
+              </Form.Label>
+            )}
           </Form.Group>
         </Row>
 
@@ -191,10 +208,10 @@ function CardForm({
               onBlur={cardNameValidation}
             />
             {cardNameValid && (
-                    <Form.Label className="m-0 text-danger ps-2">
-                      {cardNameErr}
-                    </Form.Label>
-                  )}
+              <Form.Label className="m-0 text-danger ps-2">
+                {cardNameErr}
+              </Form.Label>
+            )}
           </Form.Group>
         </Row>
 
