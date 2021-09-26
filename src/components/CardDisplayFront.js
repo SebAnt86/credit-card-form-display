@@ -6,7 +6,7 @@ function CardDisplayFront({ cardName, cardNumber, expMonth, expYear, cvv }) {
   return (
     <div className="card-front p-3 mt-5">
         <Row className="justify-content-between mt-1">
-            <div className="cc-imgs">
+            <div className="cc-imgs ms-2">
                 <img src={chip} alt="creditcard chip" className="chip m-0"></img>
             </div>
             <div className="cc-imgs">
