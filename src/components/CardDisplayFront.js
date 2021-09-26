@@ -20,7 +20,7 @@ function CardDisplayFront({ cardName, cardNumber, expMonth, expYear, cvv }) {
           <div>
             <p className="mb-0">Expires</p>
             <p>
-              <span>{!expMonth ? "MM" : expMonth}</span>/<span>{!expYear ? "YY" : expYear}</span>
+              <span>{!expMonth ? "MM" : expMonth}</span>/<span>{!expYear ? "YY" : (expYear).toString().slice(-2)}</span>
             </p>
           </div>
         </Col>
