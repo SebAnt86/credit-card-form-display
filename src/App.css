@@ -42,7 +42,9 @@ body {
 
 .card-front {
   border-radius: 15px;
-  background-color: rgb(147, 164, 169);
+  /* background-color: #81c0ce; */
+  /* background-image: url("./images/bkground.jpg"); */
+  background-image: linear-gradient(to top right, #4751ac, #cad7da);
   color: white;
   width: 350px;
   height: 230px;
