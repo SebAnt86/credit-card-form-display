@@ -116,7 +116,7 @@ function CardForm({
       setCvvValid(true);
       setCvvErr("Please enter the CVV number.");
     } else {
-      if (cardType === "AMERICAN_EXPRESS") {
+      if (cardType === "amex") {
         if (cvv.length !== 4) {
           //alert("CVV invalid length for Amex");
           setCvvValid(true);
@@ -181,13 +181,6 @@ function CardForm({
               name="card-number"
               maxLength="19"
               //  value={cardNumber}
-                // pattern={["37", "34"].includes(
-                //   cardNumber.split("").splice(0, 2).join("")
-                // )
-                //   ? AMERICANEXPRESS
-                //   : OTHERCARDS}
-                //pattern={}
-                inputMode="numeric"
               onChange={(e) => setCardNumber(e.target.value)}
               onBlur={(e) => cardNumValidation(e.target.value)}
             /> */}
