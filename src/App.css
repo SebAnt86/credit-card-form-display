@@ -43,7 +43,7 @@ body {
 .card-front {
   border-radius: 15px;
   /* background-color: #81c0ce; */
-  background-image: linear-gradient(to top right, #070d3a, #cad7da);
+  background-image: linear-gradient(to top right, #070d3a, #e5eaeb);
   color: white;
   width: 350px;
   height: 230px;
@@ -108,11 +108,10 @@ body {
 }
 .signature{
   font-size: 0.75rem;
-  color:black;
   padding-bottom: 0;
   margin-bottom: 0;
   margin-left: 0.5rem;
-  margin-top: 2rem;
+  letter-spacing: 0.06rem;
 }
 
 .cvv-back{

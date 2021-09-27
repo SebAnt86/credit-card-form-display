@@ -27,7 +27,7 @@ function CardDisplayFront({
           )}
         </div>
       </Row>
-      <Row className="">
+      <Row>
         <div className="cc-imgs ms-2">
           <img src={chip} alt="creditcard chip" className="chip"></img>
         </div>
