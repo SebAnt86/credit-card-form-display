@@ -14,9 +14,10 @@ function CardDisplayFront({
   expYear,
   cvv,
   cardType,
+  flipCard, setFlipCard
 }) {
   return (
-    <div className="card-front px-3 mt-5">
+    <div className="card-front px-3 mt-5" onClick={() => setFlipCard(!flipCard)}>
       <Row className="justify-content-end align-items-center">
         <div className="cc-imgs">
           {!cardType ? (
@@ -26,10 +27,11 @@ function CardDisplayFront({
           )}
         </div>
       </Row>
-      <Row>
-        <div className="cc-imgs ms-2 ">
+      <Row className="">
+        <div className="cc-imgs ms-2">
           <img src={chip} alt="creditcard chip" className="chip"></img>
         </div>
+        {(cardType === "amex") && (<p className="ccv-front">{cvv}</p>)}
       </Row>
       <Row className="justify-content-center mt-1 mb-1 card-number">
         <p className="text-center mb-0">
@@ -56,7 +58,6 @@ function CardDisplayFront({
         </Col>
       </Row>
 
-      <p>{cvv}</p>
     </div>
   );
 }

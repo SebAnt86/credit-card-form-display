@@ -6,6 +6,7 @@ import "./App.css";
 
 import CardForm from "./components/CardForm";
 import CardDisplayFront from "./components/CardDisplayFront";
+import CardDisplayBack from "./components/CardDisplayBack";
 
 function App() {
   const [cardName, setCardName] = useState("");
@@ -16,16 +17,22 @@ function App() {
   const [saveCard, setSaveCard] = useState([]);
   const [cardType, setCardType] = useState("");
 
+  const [flipCard, setFlipCard] = useState(false);
+
   return (
     <div className="main-container d-flex flex-column justify-content-center align-items-center">
-      <CardDisplayFront
-        cardName={cardName}
-        cardNumber={cardNumber}
-        expMonth={expMonth}
-        expYear={expYear}
-        cvv={cvv}
-        cardType={cardType} 
-      />
+      {!flipCard && (
+        <CardDisplayFront
+          cardName={cardName}
+          cardNumber={cardNumber}
+          expMonth={expMonth}
+          expYear={expYear}
+          cvv={cvv}
+          cardType={cardType}
+          flipCard={flipCard}
+          setFlipCard={setFlipCard}
+        />
+      )}
       <CardForm
         setCardName={setCardName}
         setCardNumber={setCardNumber}
@@ -39,9 +46,17 @@ function App() {
         expMonth={expMonth}
         expYear={expYear}
         cvv={cvv}
-        cardType={cardType} 
+        cardType={cardType}
         setCardType={setCardType}
       />
+      {flipCard && (
+        <CardDisplayBack
+          flipCard={flipCard}
+          setFlipCard={setFlipCard}
+          cardType={cardType}
+          cvv={cvv}
+        />
+      )}
     </div>
   );
 }

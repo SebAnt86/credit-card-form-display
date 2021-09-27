@@ -134,13 +134,6 @@ function CardForm({
     }
   };
 
-  // const cardNumberSpacing = (cardNum) => {
-  //   if (cardType !== "") {
-  //     if (cardType === "AMERICAN_EXPRESS") {
-  //       return cardNum.splice(4, 0, " ");
-  //     }
-  //   }
-  // };
 
   const onAdd = (e) => {
     e.preventDefault();
@@ -158,7 +151,7 @@ function CardForm({
     // console.log("----------------------");
 
     if (!cardNameValid && !cardNumValid && !expDateValid && !cvvValid) {
-      alert("submited!!!!!");
+      //alert("submited!!!!!");
 
       setCardName("");
       setCardNumber("");

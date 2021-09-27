@@ -38,7 +38,7 @@ body {
   font-size: 0.75rem;
 }
 
-/* card front style */
+/* card  style */
 
 .card-front {
   border-radius: 15px;
@@ -50,7 +50,6 @@ body {
   top: 0.65rem;
   box-shadow: 15px 10px 15px 10px rgba(118, 132, 179, 0.303), 15px 6px 10px 0 rgba(113, 134, 205, 0.18);
   font-family: 'Gemunu Libre', sans-serif;
-  /* padding-bottom: 1rem; */
 }
 
 .chip{
@@ -65,7 +64,13 @@ body {
 .cc-imgs{
   width: 70px;
   margin-right: 4rem;
-  padding-top: 0.5rem
+  padding-top: 0.5rem;
+}
+
+.ccv-front{
+  width: 40px;
+  margin-left: 6.5rem;
+  padding-top: 0.5rem;
 }
 
 .card-number{
@@ -85,11 +90,38 @@ body {
   padding-top: 0.2rem;
 }
 
+.magn-stripe{
+  background-color: black;
+  color: black;
+  height: 1.6rem;
+}
+
+.sing-stripe {
+  background-color: #dee1df;
+  /* margin-top: 2rem; */
+  height: 2.7rem;
+  width: 65%;
+  margin-right: 4rem;
+  margin-left: 0.5rem;
+  color: black;
+}
+.signature{
+  font-size: 0.75rem;
+  color:black;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  margin-left: 0.5rem;
+  margin-top: 2rem;
+}
+
+.cvv-back{
+  width: 20%;
+}
+
 /* media query on tablet screen */
 @media (max-width: 600px) {
   .form-style {max-width: 400px;}
 }
-
 
 /* media query on mobile screen */
 @media (max-width: 420px) {
