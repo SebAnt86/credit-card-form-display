@@ -18,8 +18,10 @@ function CardForm({
   expMonth,
   expYear,
   cvv,
+  cardType, 
+  setCardType,
 }) {
-  const [cardType, setCardType] = useState("");
+  //const [cardType, setCardType] = useState("");
 
   //error message states
   const [cardNumErr, setCardNumErr] = useState("");
@@ -35,12 +37,12 @@ function CardForm({
 
   const findDebitCardType = (cardNumber) => {
     const regexPattern = {
-      MASTERCARD: /^5[1-5][0-9]{1,}|^2[2-7][0-9]{1,}$/,
-      VISA: /^4[0-9]{2,}$/,
-      AMERICAN_EXPRESS: /^3[47][0-9]{5,}$/,
-      DISCOVER: /^6(?:011|5[0-9]{2})[0-9]{3,}$/,
-      DINERS_CLUB: /^3(?:0[0-5]|[68][0-9])[0-9]{4,}$/,
-      JCB: /^(?:2131|1800|35[0-9]{3})[0-9]{3,}$/,
+      masterCard: /^5[1-5][0-9]{1,}|^2[2-7][0-9]{1,}$/,
+      visa: /^4[0-9]{2,}$/,
+      amex: /^3[47][0-9]{5,}$/,
+      discover: /^6(?:011|5[0-9]{2})[0-9]{3,}$/,
+      diners: /^3(?:0[0-5]|[68][0-9])[0-9]{4,}$/,
+      jcb: /^(?:2131|1800|35[0-9]{3})[0-9]{3,}$/,
     };
     for (const card in regexPattern) {
       if (cardNumber.replace(/[^\d]/g, "").match(regexPattern[card]))

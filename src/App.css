@@ -42,7 +42,7 @@ body {
 
 .card-front {
   border-radius: 15px;
-  background-color: rgb(8, 8, 97);
+  background-color: rgb(147, 164, 169);
   color: white;
   width: 350px;
   height: 230px;
@@ -58,8 +58,14 @@ body {
   border-radius: 10px;
 }
 
+.logo{
+  height: 50px;
+}
+
 .cc-imgs{
-  width: 90px;
+  width: 70px;
+  margin-right: 4rem;
+  padding-top: 0.5rem
 }
 
 .card-number{
@@ -67,15 +73,17 @@ body {
 }
 
 .card-holder{
-  /* margin-right: 10rem; */
   margin-left: 0.3rem;
   border: 1px solid white;
   border-radius: 5px;
 }
 
-/* .card-holder.div{
-  width: 100%;
-} */
+.card-label{
+  font-size: 0.65rem;
+  margin-bottom: 0.2rem;
+  font-family: "Open Sans", sans-serif;
+  padding-top: 0.2rem;
+}
 
 /* media query on mobile screen */
 @media (max-width: 420px) {

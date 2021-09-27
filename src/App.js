@@ -14,6 +14,7 @@ function App() {
   const [expYear, setExpYear] = useState("");
   const [cvv, setCvv] = useState("");
   const [saveCard, setSaveCard] = useState([]);
+  const [cardType, setCardType] = useState("");
 
   return (
     <div className="main-container d-flex flex-column justify-content-center align-items-center">
@@ -23,6 +24,7 @@ function App() {
         expMonth={expMonth}
         expYear={expYear}
         cvv={cvv}
+        cardType={cardType} 
       />
       <CardForm
         setCardName={setCardName}
@@ -37,6 +39,8 @@ function App() {
         expMonth={expMonth}
         expYear={expYear}
         cvv={cvv}
+        cardType={cardType} 
+        setCardType={setCardType}
       />
     </div>
   );
