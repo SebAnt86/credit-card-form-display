@@ -57,4 +57,6 @@ export const OTHERCARDS = [
     jcb
   };
   
+
+  export const CVV = [/[0-9]/, /\d/, /\d/, /\d/];
  

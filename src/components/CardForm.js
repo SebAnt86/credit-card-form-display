@@ -10,6 +10,7 @@ import MaskedInput from "react-text-mask";
 import {
   AMERICANEXPRESS,
   OTHERCARDS,
+  CVV
 } from "./constants";
 
 function CardForm({
@@ -310,16 +311,16 @@ function CardForm({
           <Col xs={6} md={4}>
             <Form.Group>
               <Form.Label>CVV</Form.Label>
-              <Form.Control
+              {/* <Form.Control
                 type="text"
                 maxLength="4"
                 value={cvv}
                 onChange={(e) => setCvv(e.target.value)}
                 onBlur={cvvValidation}
-              />
-              {/* <Row className="mx-1">
+              /> */}
+              <Row className="mx-1">
                 <MaskedInput
-                  mask={CVC}
+                  mask={CVV}
                   guide={false}
                   name="cvv"
                   required
@@ -330,7 +331,7 @@ function CardForm({
                   onBlur={cvvValidation}
                   className="form-control"
                 />
-              </Row> */}
+              </Row>
               {cvvValid && (
                 <Form.Label className="m-0 text-danger ps-2">
                   {cvvErr}
