@@ -43,14 +43,13 @@ body {
 .card-front {
   border-radius: 15px;
   /* background-color: #81c0ce; */
-  /* background-image: url("./images/bkground.jpg"); */
-  background-image: linear-gradient(to top right, #4751ac, #cad7da);
+  background-image: linear-gradient(to top right, #070d3a, #cad7da);
   color: white;
   width: 350px;
   height: 230px;
   position: absolute;
   top: 0.65rem;
-  box-shadow: 15px 10px 15px 10px rgba(118, 132, 179, 0.303), 15px 6px 10px 0 rgba(113, 134, 205, 0.18);
+  box-shadow: 15px 10px 15px 10px #7684b34d, 15px 6px 10px 0 #7186cd2e;
   font-family: 'Gemunu Libre', sans-serif;
 }
 
