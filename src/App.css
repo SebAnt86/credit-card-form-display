@@ -85,6 +85,12 @@ body {
   padding-top: 0.2rem;
 }
 
+/* media query on tablet screen */
+@media (max-width: 600px) {
+  .form-style {max-width: 400px;}
+}
+
+
 /* media query on mobile screen */
 @media (max-width: 420px) {
   .form-style {
@@ -93,17 +99,27 @@ body {
     margin: 0 0.2rem !important;
     margin-top: 11.5rem !important;
     margin-bottom: 5rem !important;
-    max-width: 300px;
+    max-width: 280px;
   }
   .card-front {
-    width: 300px;
+    width: 280px;
     height: 180px;
     font-size: 0.55rem;
   }
   .card-number{
-    font-size: 1.55rem;
+    font-size: 1.3rem;
   }
   .chip{
     margin-top: 0.2rem !important;
+  }
+  .cc-imgs {
+    width: 50px;
+    margin-right: 2rem;
+  }
+  .card-label{
+    font-size: 0.45rem;
+  }
+  .logo{
+    height: 30px;
   }
 }

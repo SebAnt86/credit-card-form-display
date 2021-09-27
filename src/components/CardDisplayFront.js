@@ -2,15 +2,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import chip from "../images/chip.png";
-import amex from "../images/amex.png";
-import diners from "../images/diners.png";
-import discover from "../images/discover.png";
-import visa from "../images/visa.png";
-import masterCard from "../images/masterCard.png";
-import jcb from "../images/jcb.png";
 import logo from "../images/logoPlaceholder.png";
 
-//import { useState } from "react";
+import { CARDICON } from "./constants";
+
 
 function CardDisplayFront({
   cardName,
@@ -20,18 +15,6 @@ function CardDisplayFront({
   cvv,
   cardType,
 }) {
- 
-
-  const cardIcons = {
-    amex,
-    diners,
-    discover,
-    visa,
-    masterCard,
-    jcb
-  };
-
-
   return (
     <div className="card-front px-3 mt-5">
       <Row className="justify-content-end align-items-center">
@@ -39,7 +22,7 @@ function CardDisplayFront({
           {!cardType ? (
             <img src={logo} alt="" className="logo"></img>
           ) : (
-            <img src={cardIcons[cardType]} alt="" className="logo"></img>
+            <img src={CARDICON[cardType]} alt="" className="logo"></img>
           )}
         </div>
       </Row>

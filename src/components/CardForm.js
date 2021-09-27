@@ -5,6 +5,13 @@ import Col from "react-bootstrap/Col";
 
 import { useState } from "react";
 
+import MaskedInput from "react-text-mask";
+
+import {
+  AMERICANEXPRESS,
+  OTHERCARDS,
+} from "./constants";
+
 function CardForm({
   setCardName,
   setCardNumber,
@@ -18,7 +25,7 @@ function CardForm({
   expMonth,
   expYear,
   cvv,
-  cardType, 
+  cardType,
   setCardType,
 }) {
   //const [cardType, setCardType] = useState("");
@@ -35,7 +42,7 @@ function CardForm({
   const [cvvValid, setCvvValid] = useState(true);
   const [expDateValid, setExpDateValid] = useState(true);
 
-  const findDebitCardType = (cardNumber) => {
+  const findDebitCardType = (value) => {
     const regexPattern = {
       masterCard: /^5[1-5][0-9]{1,}|^2[2-7][0-9]{1,}$/,
       visa: /^4[0-9]{2,}$/,
@@ -45,14 +52,11 @@ function CardForm({
       jcb: /^(?:2131|1800|35[0-9]{3})[0-9]{3,}$/,
     };
     for (const card in regexPattern) {
-      if (cardNumber.replace(/[^\d]/g, "").match(regexPattern[card]))
-        return card;
+      if (value.replace(/[^\d]/g, "").match(regexPattern[card])) return card;
     }
     return "";
   };
 
-  //setCardType(findDebitCardType(cardNumber));
-  //console.log(cardType);
 
   const cardNumValidation = () => {
     setCardType(findDebitCardType(cardNumber));
@@ -117,7 +121,7 @@ function CardForm({
           //alert("CVV invalid length for Amex");
           setCvvValid(true);
           setCvvErr("Invalid Amex CVV number!");
-        }else {
+        } else {
           setCvvValid(false);
         }
       } else if (cvv.length !== 3) {
@@ -153,7 +157,6 @@ function CardForm({
     // console.log("cvvValid: " + cvvValid);
     // console.log("----------------------");
 
-  
     if (!cardNameValid && !cardNumValid && !expDateValid && !cvvValid) {
       alert("submited!!!!!");
 
@@ -162,10 +165,15 @@ function CardForm({
       setExpMonth("");
       setExpYear("");
       setCvv("");
+      setCardType("");
       setCardNameValid(true);
       setCardNumValid(true);
       setExpDateValid(true);
       setCvvValid(true);
+      setCardNameErr("");
+      setCardNumErr("");
+      setExpDateErr("");
+      setCvvErr("");
     }
   };
 
@@ -175,14 +183,39 @@ function CardForm({
         <Row>
           <Form.Group className="mb-3">
             <Form.Label>Card Number</Form.Label>
-            <Form.Control
+            {/* <Form.Control
               type="text"
               name="card-number"
               maxLength="19"
-              value={cardNumber}
+              //  value={cardNumber}
+                // pattern={["37", "34"].includes(
+                //   cardNumber.split("").splice(0, 2).join("")
+                // )
+                //   ? AMERICANEXPRESS
+                //   : OTHERCARDS}
+                //pattern={}
+                inputMode="numeric"
               onChange={(e) => setCardNumber(e.target.value)}
-              onBlur={cardNumValidation}
-            />
+              onBlur={(e) => cardNumValidation(e.target.value)}
+            /> */}
+            <Row className="mx-1">
+              <MaskedInput
+                mask={
+                  ["37", "34"].includes(
+                    cardNumber.split("").splice(0, 2).join("")
+                  )
+                    ? AMERICANEXPRESS
+                    : OTHERCARDS
+                }
+                guide={false}
+                placeholderChar={"\u2000"}
+                name="card"
+                value={cardNumber}
+                onChange={(e) => setCardNumber(e.target.value)}
+                onBlur={(e) => cardNumValidation(e.target.value)}
+                className="form-control"
+              />
+            </Row>
             {cardNumValid && (
               <Form.Label className="m-0 text-danger ps-2">
                 {cardNumErr}
@@ -298,6 +331,20 @@ function CardForm({
                 onChange={(e) => setCvv(e.target.value)}
                 onBlur={cvvValidation}
               />
+              {/* <Row className="mx-1">
+                <MaskedInput
+                  mask={CVC}
+                  guide={false}
+                  name="cvv"
+                  required
+                  placeholderChar={"\u2000"}
+                  //placeholder="Secuirty Code"
+                  value={cvv}
+                  onChange={(e) => setCvv(e.target.value)}
+                  onBlur={cvvValidation}
+                  className="form-control"
+                />
+              </Row> */}
               {cvvValid && (
                 <Form.Label className="m-0 text-danger ps-2">
                   {cvvErr}

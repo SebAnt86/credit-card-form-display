@@ -47,10 +47,8 @@ export const OTHERCARDS = [
     /\d/,
     /\d/
   ];
-  export const EXPIRYDATE = [/[0-9]/, /\d/, "/", /\d/, /\d/];
-  export const CVC = [/[0-9]/, /\d/, /\d/, /\d/];
-  
-  export const cardIcons = {
+
+  export const CARDICON = {
     amex,
     diners,
     discover,
@@ -59,11 +57,4 @@ export const OTHERCARDS = [
     jcb
   };
   
-  export const CARDARR = [
-    "VISA",
-    "MASTERCARD",
-    "AMERICAN_EXPRESS",
-    "DISCOVER",
-    "DINERS_CLUB",
-    "JCB"
-  ];
+ 
