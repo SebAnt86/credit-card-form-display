@@ -7,11 +7,7 @@ import { useState } from "react";
 
 import MaskedInput from "react-text-mask";
 
-import {
-  AMERICANEXPRESS,
-  OTHERCARDS,
-  CVV
-} from "./constants";
+import { AMERICANEXPRESS, OTHERCARDS, CVV } from "./constants";
 
 function CardForm({
   setCardName,
@@ -58,7 +54,6 @@ function CardForm({
     return "";
   };
 
-
   const cardNumValidation = () => {
     setCardType(findDebitCardType(cardNumber));
     if (!cardNumber) {
@@ -67,7 +62,7 @@ function CardForm({
     } else {
       setCardNumValid(false);
     }
-    console.log(cardType);
+    //console.log(cardType);
   };
 
   const cardNameValidation = () => {
@@ -76,6 +71,18 @@ function CardForm({
       setCardNameErr("Please enter the card holder's name.");
     } else {
       setCardNameValid(false);
+    }
+
+    if (cardName) {
+      if (/^[a-zA-Z ]*$/i.test(cardName)) {
+        return undefined;
+      } else {
+        setCardNameValid(true);
+        setCardNameErr("Only alphabets");
+        return "Only alphabets";
+      }
+    } else {
+      return undefined;
     }
   };
 
@@ -134,7 +141,6 @@ function CardForm({
       }
     }
   };
-
 
   const onAdd = (e) => {
     e.preventDefault();
@@ -325,7 +331,6 @@ function CardForm({
                   name="cvv"
                   required
                   placeholderChar={"\u2000"}
-                  //placeholder="Secuirty Code"
                   value={cvv}
                   onChange={(e) => setCvv(e.target.value)}
                   onBlur={cvvValidation}
