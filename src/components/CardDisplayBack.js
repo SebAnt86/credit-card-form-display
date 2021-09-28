@@ -1,10 +1,11 @@
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 import { CARDICON } from "./constants";
 
 import logo from "../images/logoPlaceholder.png";
 
-function CardDisplayBack({ flipCard, setFlipCard, cardType, cvv }) {
+function CardDisplayBack({ flipCard, setFlipCard, cardType, cvv, cardName }) {
   return (
     <div className="card-front mt-5" onClick={() => setFlipCard(!flipCard)}>
       <p className="magn-stripe mt-4 mb-0 pb-0"></p>
@@ -17,9 +18,10 @@ function CardDisplayBack({ flipCard, setFlipCard, cardType, cvv }) {
           )}
         </div>
       </Row>
-      <p className="signature">Authorised Signature</p>
-      <Row className="sing-stripe justify-content-end align-items-center">
-        <p className="cvv-back">{cardType !== "amex" ? cvv : ""}</p>
+      <p className="signature-space">Authorised Signature</p>
+      <Row className="sing-stripe justify-content-between align-items-center">
+          {cardName && (<Col xs={9} className="signature">{cardName}</Col>)}
+        <Col xs={3} className="cvv-back">{cardType !== "amex" ? cvv : ""}</Col>
       </Row>
     </div>
   );

@@ -55,6 +55,7 @@ function App() {
           setFlipCard={setFlipCard}
           cardType={cardType}
           cvv={cvv}
+          cardName={cardName}
         />
       )}
     </div>
