@@ -59,4 +59,9 @@ export const OTHERCARDS = [
   
 
   export const CVV = [/[0-9]/, /\d/, /\d/, /\d/];
+
+  export const CARD_DISPLAY = {
+    absolute: "card-display-position",
+    static: "",
+  } 
  

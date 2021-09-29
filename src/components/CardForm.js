@@ -173,13 +173,7 @@ function CardForm({
   };
 
   const handleSaveCard = () => {
-    if (
-      checkBoxSave &&
-      !cardNameValid &&
-      !cardNumValid &&
-      !expDateValid &&
-      !cvvValid
-    ) {
+    if (checkBoxSave) {
       const cardId = Math.floor(Math.random() * 1000) + 1;
       const newCard = {
         cardId,
@@ -190,8 +184,10 @@ function CardForm({
         cvv,
         cardType,
       };
+      
+      setCards([...cards, newCard]);
       console.log(newCard);
-      //setCards([...cards, newCard]);
+      console.log(cards);
     }
   };
 
@@ -203,7 +199,7 @@ function CardForm({
     expDateValidation();
     cvvValidation();
     cardNameValidation();
-    handleSaveCard();
+    
 
     // console.log("cardNameValid: " + cardNameValid);
     // console.log("cardNumValid: " + cardNumValid);
@@ -213,6 +209,7 @@ function CardForm({
 
     if (!cardNameValid && !cardNumValid && !expDateValid && !cvvValid) {
       //alert("submited!!!!!");
+      handleSaveCard();
 
       setCardName("");
       setCardNumber("");

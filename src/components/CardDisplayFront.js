@@ -4,8 +4,7 @@ import Col from "react-bootstrap/Col";
 import chip from "../images/chip.png";
 import logo from "../images/logoPlaceholder.png";
 
-import { CARDICON } from "./constants";
-
+import { CARDICON, CARD_DISPLAY } from "./constants";
 
 function CardDisplayFront({
   cardName,
@@ -14,10 +13,12 @@ function CardDisplayFront({
   expYear,
   cvv,
   cardType,
-  flipCard, setFlipCard
+  flipCard, 
+  setFlipCard,
+  cardPosition,
 }) {
   return (
-    <div className="card-front px-3 mt-5" onClick={() => setFlipCard(!flipCard)}>
+    <div className={`card-display ${CARD_DISPLAY[cardPosition]} px-3 mt-5`} onClick={() => setFlipCard(!flipCard)}>
       <Row className="justify-content-end align-items-center">
         <div className="cc-imgs">
           {!cardType ? (

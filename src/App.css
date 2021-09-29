@@ -17,6 +17,14 @@ body {
   position: relative;
 }
 
+/* .hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+} */
+
 /* Form Style */
 
 .form-style {
@@ -25,7 +33,7 @@ body {
   border-radius: 10px;
   font-size: 0.85rem;
   padding-top: 9rem !important;
-  margin-top: 11.5rem;
+  margin-top: 9rem;
   margin-bottom: 5rem;
   box-shadow: 10px 10px 20px 20px rgba(118, 132, 179, 0.193), 10px 6px 20px 0 rgba(113, 134, 205, 0.132);
 }
@@ -45,17 +53,22 @@ body {
 
 /* card  style */
 
-.card-front {
+.card-display {
   border-radius: 15px;
   /* background-color: #81c0ce; */
   background-image: linear-gradient(to top right, #070d3a, #e5eaeb);
   color: white;
   width: 350px;
   height: 230px;
-  position: absolute;
-  top: 0.65rem;
+  /* position: absolute;
+  top: 0.65rem; */
   box-shadow: 15px 10px 15px 10px #7684b34d, 15px 6px 10px 0 #7186cd2e;
   font-family: 'Gemunu Libre', sans-serif;
+}
+
+.card-display-position{
+  position: absolute;
+  top: 0.65rem;
 }
 
 .chip{
@@ -104,7 +117,6 @@ body {
 
 .sing-stripe {
   background-color: #dee1df;
-  /* margin-top: 2rem; */
   height: 2.7rem;
   width: 65%;
   margin-right: 4rem;
@@ -145,10 +157,9 @@ body {
     padding-top: 7rem !important;
     margin: 0 0.2rem !important;
     margin-top: 7rem !important;
-    margin-bottom: 5rem !important;
     max-width: 280px;
   }
-  .card-front {
+  .card-display {
     width: 280px;
     height: 180px;
     font-size: 0.55rem;
