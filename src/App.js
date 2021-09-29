@@ -14,7 +14,7 @@ function App() {
   const [expMonth, setExpMonth] = useState("");
   const [expYear, setExpYear] = useState("");
   const [cvv, setCvv] = useState("");
-  const [saveCard, setSaveCard] = useState([]);
+  const [cards, setCards] = useState([]);
   const [cardType, setCardType] = useState("");
 
   const [flipCard, setFlipCard] = useState(false);
@@ -40,8 +40,8 @@ function App() {
         setExpMonth={setExpMonth}
         setExpYear={setExpYear}
         setCvv={setCvv}
-        setSaveCard={setSaveCard}
-        saveCard={saveCard}
+        setCards={setCards}
+        cards={cards}
         cardName={cardName}
         cardNumber={cardNumber}
         expMonth={expMonth}

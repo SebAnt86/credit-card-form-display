@@ -15,8 +15,7 @@ function CardForm({
   setExpMonth,
   setExpYear,
   setCvv,
-  setSaveCard,
-  saveCard,
+  cards, setCards, 
   cardName,
   cardNumber,
   expMonth,
@@ -25,7 +24,6 @@ function CardForm({
   cardType,
   setCardType,
 }) {
-  
   //error message states
   const [cardNumErr, setCardNumErr] = useState("");
   const [cardNameErr, setCardNameErr] = useState("");
@@ -37,6 +35,8 @@ function CardForm({
   const [cardNumValid, setCardNumValid] = useState(true);
   const [cvvValid, setCvvValid] = useState(true);
   const [expDateValid, setExpDateValid] = useState(true);
+
+  const [checkBoxSave, setCheckBoxSave] = useState(false);
 
   const findDebitCardType = (value) => {
     const regexPattern = {
@@ -88,13 +88,12 @@ function CardForm({
     };
 
     //alert(patternMatch(cardNumber));
-    if(patternMatch(cardNumber)){
+    if (patternMatch(cardNumber)) {
       setCardNumValid(true);
       setCardNumErr("Please enter a valid card number.");
     } else {
       setCardNumValid(false);
     }
-
   };
 
   const cardNameValidation = () => {
@@ -151,7 +150,6 @@ function CardForm({
 
   // check if the cvv is a valid digits number
   const cvvValidation = () => {
-    //setCardType(findDebitCardType(cardNumber));
     if (!cvv) {
       setCvvValid(true);
       setCvvErr("Please enter the CVV number.");
@@ -174,6 +172,29 @@ function CardForm({
     }
   };
 
+  const handleSaveCard = () => {
+    if (
+      checkBoxSave &&
+      !cardNameValid &&
+      !cardNumValid &&
+      !expDateValid &&
+      !cvvValid
+    ) {
+      const cardId = Math.floor(Math.random() * 1000) + 1;
+      const newCard = {
+        cardId,
+        cardName,
+        cardNumber,
+        expMonth,
+        expYear,
+        cvv,
+        cardType,
+      };
+      console.log(newCard);
+      //setCards([...cards, newCard]);
+    }
+  };
+
   const onAdd = (e) => {
     e.preventDefault();
 
@@ -182,6 +203,7 @@ function CardForm({
     expDateValidation();
     cvvValidation();
     cardNameValidation();
+    handleSaveCard();
 
     // console.log("cardNameValid: " + cardNameValid);
     // console.log("cardNumValid: " + cardNumValid);
@@ -206,6 +228,7 @@ function CardForm({
       setCardNumErr("");
       setExpDateErr("");
       setCvvErr("");
+      setCheckBoxSave(false);
     }
   };
 
@@ -380,7 +403,12 @@ function CardForm({
 
         <Row>
           <Form.Group className="mb-3">
-            <Form.Check type="checkbox" label="Save card details" />
+            <Form.Check
+              type="checkbox"
+              label="Save card details"
+              onChange={() => setCheckBoxSave(!checkBoxSave)}
+              checked={checkBoxSave}
+            />
           </Form.Group>
         </Row>
 
