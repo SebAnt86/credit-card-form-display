@@ -39,6 +39,10 @@ body {
   font-size: 0.75rem;
 }
 
+.card-flip{
+  font-size: 0.75rem;
+}
+
 /* card  style */
 
 .card-front {
@@ -138,9 +142,9 @@ body {
 @media (max-width: 420px) {
   .form-style {
     padding: 0.8rem !important;
-    padding-top: 9rem !important;
+    padding-top: 7rem !important;
     margin: 0 0.2rem !important;
-    margin-top: 11.5rem !important;
+    margin-top: 7rem !important;
     margin-bottom: 5rem !important;
     max-width: 280px;
   }

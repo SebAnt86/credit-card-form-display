@@ -25,8 +25,7 @@ function CardForm({
   cardType,
   setCardType,
 }) {
-  //const [cardType, setCardType] = useState("");
-
+  
   //error message states
   const [cardNumErr, setCardNumErr] = useState("");
   const [cardNameErr, setCardNameErr] = useState("");

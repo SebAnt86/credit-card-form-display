@@ -21,6 +21,7 @@ function App() {
 
   return (
     <div className="main-container d-flex flex-column justify-content-center align-items-center">
+      <div className="mt-4 card-flip">Click on the card to see the other side</div>
       {!flipCard && (
         <CardDisplayFront
           cardName={cardName}
