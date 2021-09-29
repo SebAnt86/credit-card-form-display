@@ -145,6 +145,13 @@ body {
   text-transform: capitalize;
 }
 
+
+/* CARD LIST DISPLY */
+
+.card-list-element {
+  list-style: none;
+}
+
 /* media query on tablet screen */
 @media (max-width: 600px) {
   .form-style {max-width: 400px;}

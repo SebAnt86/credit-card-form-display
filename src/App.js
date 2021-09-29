@@ -65,7 +65,7 @@ function App() {
         />
       )}
 
-      {/* {cards.length > 0 ? (
+      {cards.length > 0 ? (
         <ShowCards
           cards={cards}
           flipCard={flipCard}
@@ -74,7 +74,7 @@ function App() {
         />
       ) : (
         ""
-      )} */}
+      )}
     </div>
   );
 }

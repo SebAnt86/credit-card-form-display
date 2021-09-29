@@ -7,7 +7,7 @@ import logo from "../images/logoPlaceholder.png";
 
 function CardDisplayBack({ flipCard, setFlipCard, cardType, cvv, cardName, cardPosition, }) {
   return (
-    <div className={`card-display ${CARD_DISPLAY[cardPosition]} px-3 mt-5`} onClick={() => setFlipCard(!flipCard)}>
+    <div className={`card-display mt-5 pt-1 ${CARD_DISPLAY[cardPosition]}`} onClick={() => setFlipCard(!flipCard)}>
       <p className="magn-stripe mt-4 mb-0 pb-0"></p>
       <Row className="justify-content-end align-items-center">
         <div className="cc-imgs">
