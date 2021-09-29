@@ -106,15 +106,20 @@ function CardForm({
 
     if (cardName) {
       if (/^[a-zA-Z ]*$/i.test(cardName)) {
-        return undefined;
+        if((cardName.length < 2) ||  ((cardName.length > 26)) ){
+          setCardNameValid(true);
+          setCardNameErr("Name length must be between 2 and 26 characters");
+          return undefined;
+        }
       } else {
         setCardNameValid(true);
         setCardNameErr("Only alphabets");
         return "Only alphabets";
       }
-    } else {
-      return undefined;
-    }
+    } 
+    // else {
+    //   return undefined;
+    // }
   };
 
   // check if the card is expired
@@ -199,7 +204,6 @@ function CardForm({
     expDateValidation();
     cvvValidation();
     cardNameValidation();
-    
 
     // console.log("cardNameValid: " + cardNameValid);
     // console.log("cardNumValid: " + cardNumValid);
@@ -274,6 +278,7 @@ function CardForm({
             <Form.Label>Card Name</Form.Label>
             <Form.Control
               type="text"
+              maxLength="26"
               value={cardName}
               onChange={(e) => setCardName(e.target.value)}
               onBlur={cardNameValidation}
