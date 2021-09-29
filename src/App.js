@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -19,6 +19,23 @@ function App() {
   const [cardType, setCardType] = useState("");
 
   const [flipCard, setFlipCard] = useState(false);
+
+  // Only run once the first time the component is rendered
+  useEffect(() => {
+    if (localStorage.getItem("cardsData")) {
+      setCards(JSON.parse(localStorage.getItem("cardsData")));
+    }
+  }, []);
+
+  // Run every time our cards state changes
+  useEffect(() => {
+    localStorage.setItem("cardsData", JSON.stringify(cards));
+  }, [cards]);
+
+  // Delete card
+  const deleteCard = (id) => {
+    setCards(cards.filter((card) => card.cardId !== id));
+  };
 
   return (
     <div className="main-container d-flex flex-column justify-content-center align-items-center">
@@ -71,6 +88,7 @@ function App() {
           flipCard={flipCard}
           setFlipCard={setFlipCard}
           key={cards.cardId}
+          deleteCard={deleteCard}
         />
       ) : (
         ""

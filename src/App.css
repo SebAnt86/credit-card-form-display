@@ -152,6 +152,16 @@ body {
   list-style: none;
 }
 
+.delete-card{
+  color: #da5151d5;
+  width: fit-content;
+}
+
+.delete-card:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /* media query on tablet screen */
 @media (max-width: 600px) {
   .form-style {max-width: 400px;}
